@@ -1,9 +1,12 @@
-#include <stdio.h>
-#include "sum.h"
+#include "GPIO.h"
 
-int main(){
-    int a = 1;
-    int b = 2;
-    printf("a + b = %d \n", sum(a,b));
-    return 0;
+void main()
+{
+    Clock_init();
+    GPIO_init();
+    while (1)
+    {
+        GPIOC->ODR ^= (1 << 13);
+        myDelay(500);
+    }
 }
