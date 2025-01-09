@@ -6,7 +6,7 @@
 #define GPIO_H
 
 #define uint32_t unsigned int
-
+#define uint8_t unsigned char
 /*Peripheral memory map*/
 #define PERIPH_Base 0x40000000U
 #define APB1_Base PERIPH_Base
@@ -21,6 +21,8 @@
 #define EXTI_Base (APB2_Base + 0x0400U)
 #define AFIO_Base (APB2_Base + 0x0000U)
 
+#define TIM1_Base (APB1_Base)
+#define TIM2_Base (APB1_Base + 0x0200U)
 /*GPIO config*/
 typedef struct
 {
@@ -36,6 +38,20 @@ typedef struct
 #define GPIOA ((GPIO_RegDef_t *)GPIOA_Base)
 #define GPIOB ((GPIO_RegDef_t *)GPIOB_Base)
 #define GPIOC ((GPIO_RegDef_t *)GPIOC_Base)
+
+/* GPIO Modes */
+#define GPIO_MODE_INPUT 0x00
+#define GPIO_MODE_OUTPUT_PP 0x01
+#define GPIO_MODE_OUTPUT_OD 0x02
+#define GPIO_MODE_AF_PP 0x03
+#define GPIO_MODE_AF_OD 0x04
+#define GPIO_MODE_ANALOG 0x05
+#define GPIO_MODE_INPUT_PU_PD 0x06
+
+/* GPIO Speed */
+#define GPIO_SPEED_10MHZ 0x01
+#define GPIO_SPEED_2MHZ 0x02
+#define GPIO_SPEED_50MHZ 0x03
 
 /*RCC config*/
 typedef struct
@@ -78,8 +94,12 @@ typedef struct
 } AFIO_TypeDef;
 
 #define AFIO ((AFIO_TypeDef *)AFIO_BASE)
-void myDelay();
-void Clock_init();
-void GPIO_init();
+// void myDelay();
+// void Clock_init();
+// void GPIO_init();
 
+typedef struct{
+
+} TIM_TypeDef;
+#define TIME2 ((TIM_TypeDef *)TIM2_Base)
 #endif /* GPIO_H */
