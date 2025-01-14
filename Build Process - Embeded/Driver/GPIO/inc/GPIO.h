@@ -21,8 +21,15 @@
 #define EXTI_Base (APB2_Base + 0x0400U)
 #define AFIO_Base (APB2_Base + 0x0000U)
 
+/*Timer*/
 #define TIM1_Base (APB1_Base)
 #define TIM2_Base (APB1_Base + 0x0200U)
+
+#define USART1_Base (APB2_Base + 0x3800U)
+#define USART2_Base (APB2_Base + 0x4400U)
+#define USART3_Base (APB2_Base + 0x4800U)
+
+
 /*GPIO config*/
 typedef struct
 {
@@ -94,7 +101,7 @@ typedef struct
 } AFIO_TypeDef;
 
 #define AFIO ((AFIO_TypeDef *)AFIO_BASE)
-// void myDelay();
+void myDelay();
 // void Clock_init();
 // void GPIO_init();
 
@@ -102,4 +109,18 @@ typedef struct{
 
 } TIM_TypeDef;
 #define TIME2 ((TIM_TypeDef *)TIM2_Base)
+
+
+typedef struct {
+    volatile uint32_t SR;
+    volatile uint32_t DR;
+    volatile uint32_t BRR;
+    volatile uint32_t CR1;
+    volatile uint32_t CR2;
+    volatile uint32_t CR3;
+    volatile uint32_t GTPR;
+} USART_TypeDef;
+#define USART1 ((USART_Typedef *) USART1_Base)
+
+#define USART1_PCCK_EN() (RCC->APB2ENR |= (1 << 14))
 #endif /* GPIO_H */
