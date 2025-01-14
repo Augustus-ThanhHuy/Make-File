@@ -26,6 +26,6 @@ void main()
         // GPIOB->ODR ^= (1 << 2);
         // myDelay(200);
         GPIOC->ODR ^= (1 << 13);
-        myDelay(1000);
+        myDelay(2000);
     }
 }
